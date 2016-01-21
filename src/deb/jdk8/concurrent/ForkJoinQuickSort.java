@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package deb.jdk8.concurrent;
 
@@ -10,8 +10,8 @@ import java.util.concurrent.RecursiveAction;
 /**
  * @author GHOSH
  *	Beautiful implementation of Quick Sort using the Fork/Join Framework.
- *  ForkJoinPool (Executor Service implementation for fork/join framework) used
- *  to first invoke either a recursiveTask(if the compuation returns value) or
+ *  ForkJoinPool (Executor Service implementation for fork/join framework) is used
+ *  to  invoke either a recursiveTask(if the compuation returns value) or
  *  RecursiveAction (if the computation doesn't return a value). Since this is a
  *  in-place quickSort implementation the computation updates the sorting by reference
  *  and hence no return value. Hence RecursiveAction implemntation used for the QuickSortTask.
@@ -60,18 +60,18 @@ public class ForkJoinQuickSort extends RecursiveAction {
 					pivotIndex--;
 				}
 			}
-			
+
 			invokeAll(new ForkJoinQuickSort(arr, startlength, pivotIndex),
 					new ForkJoinQuickSort(arr,pivotIndex+1,endLength));
 		}
-		
+
 	}
-	
+
 	private void shiftLeft(int [] args,int startIndex , int endIndex){
-	
+
 		for(int i=startIndex;i<endIndex;i++){
 			args[i]=args[i+1];
 		}
 	}
-	
+
 }
